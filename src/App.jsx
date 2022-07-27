@@ -1,9 +1,17 @@
-function App() {
+import { Route } from "react-router-dom";
+
+import Welcome from "./view/welcome";
+import Products from "./view/products";
+
+export function App() {
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+    <>
+      <Route path="/welcome">
+        <Welcome />
+      </Route>
+      <Route path="/products">
+        <Products />
+      </Route>
+    </>
   );
 }
-
-export default App;
