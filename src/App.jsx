@@ -1,20 +1,28 @@
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Welcome from "./view/welcome";
 import Products from "./view/products";
-import { MainHeader } from "./components";
+import { MainHeader, ProductDetail } from "./components";
 
 export function App() {
   return (
     <div>
       <MainHeader />
       <main>
-        <Route path="/welcome">
-          <Welcome />
-        </Route>
-        <Route path="/products">
-          <Products />
-        </Route>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/welcome" />
+          </Route>
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Route path="/products" exact>
+            <Products />
+          </Route>
+          <Route path="/products/:productID">
+            <ProductDetail />
+          </Route>
+        </Switch>
       </main>
     </div>
   );
